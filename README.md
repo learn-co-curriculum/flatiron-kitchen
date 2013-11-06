@@ -27,7 +27,7 @@ track of the ingredients for each recipe.
 
 Build your site so that it passes the tests in spec/features.
 
-## Bonuses
+## Bonuses!
 
 Keep track of the quantity of ingredients currently on hand. Display on the each
 recipe page how many dishes can be made given the existing ingredients.
