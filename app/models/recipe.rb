@@ -3,7 +3,7 @@ class Recipe < ActiveRecord::Base
   has_many :ingredients, through: :recipe_ingredients
 
   def update_ingredients_by_id(ingredient_ids)
-    ingredients = Ingredient.find(:all, :conditions => ["id in (?)", ingredient_ids])
+    ingredients = Ingredient.where("id in (?)", ingredient_ids).all
     self.ingredients = ingredients
   end
 end
