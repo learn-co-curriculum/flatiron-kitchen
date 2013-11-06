@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20131106182601) do
   end
 
   create_table "recipes", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
