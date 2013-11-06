@@ -11,7 +11,7 @@ describe "editing recipes" do
       expect(page).to have_css("form#edit_recipe_#{@recipe.id}")
     end
 
-    it "should update an recipe when the form is submitted" do
+    it "should update a recipe when the form is submitted" do
       fill_in 'recipe_name', with: "Rice Pudding with Farmer Darryl's Frog Sauce"
       click_button('Update Recipe')
 
