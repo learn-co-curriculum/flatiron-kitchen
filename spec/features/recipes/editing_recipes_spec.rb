@@ -25,7 +25,7 @@ describe "editing recipes" do
       Ingredient.create(name: 'Ginger')
       Ingredient.create(name: 'Cider')
 
-      visit edit_recipe_path
+      visit edit_recipe_path(@recipe)
 
       check('Paprika')
       check('Clove')
@@ -45,7 +45,7 @@ describe "editing recipes" do
 
       @recipe.ingredients.count.should == 4
 
-      visit edit_recipe_path
+      visit edit_recipe_path(@recipe)
 
       uncheck('Paprika')
       uncheck('Clove')
