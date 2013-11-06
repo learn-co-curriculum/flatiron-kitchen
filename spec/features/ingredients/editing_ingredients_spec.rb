@@ -8,7 +8,7 @@ describe "editing ingredients" do
     end
 
     it "should have a form to edit the ingredient" do
-      expect(page).to have_css("form#edit_ingredient")
+      expect(page).to have_css("form#edit_ingredient_#{@ingredient.id}")
     end
 
     it "should update an ingredient when the form is submitted" do
