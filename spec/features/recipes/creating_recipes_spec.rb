@@ -85,6 +85,9 @@ describe "creating recipes" do
     #       implemented HTML label
     #       (i.e. clicking on the <label> checks/unchecks the box).
     it "should create a recipe with 0 ingredients" do
+      Ingredient.create(name: 'Paprika')
+      Ingredient.create(name: 'Clove')
+
       visit new_recipe_path
 
       fill_in 'recipe_name', with: 'Recipe in Progress'
