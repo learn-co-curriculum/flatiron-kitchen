@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "editing ingredients" do
   context "on the edit ingredient page" do
     before do
-      @ingredient = Ingredient.create("Salmon Flanks")
+      @ingredient = Ingredient.create(name: "Salmon Flanks")
       visit edit_ingredient_path(@ingredient)
     end
 
@@ -11,7 +11,7 @@ describe "editing ingredients" do
       expect(page).to have_css("form#edit_ingredient")
     end
 
-    it "should updae an ingredient when the form is submitted" do
+    it "should update an ingredient when the form is submitted" do
       fill_in 'ingredient_name', with: 'Rochester Pollywog Eggs'
       click_button('Update Ingredient')
 
