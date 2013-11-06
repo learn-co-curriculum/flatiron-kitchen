@@ -7,6 +7,10 @@ class IngredientsController < ApplicationController
     @ingredient = Ingredient.new
   end
 
+  def edit
+    @ingredient = Ingredient.find(params[:id])
+  end
+
   def create
     Ingredient.create(ingredient_params)
 
