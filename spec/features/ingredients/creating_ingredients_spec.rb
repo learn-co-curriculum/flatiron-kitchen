@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "creating ingredients" do
   context "on the new ingredient page" do
     before do
-      visit new_ingredients_path
+      visit new_ingredient_path
     end
 
     it "should have a form to create the ingredients" do
