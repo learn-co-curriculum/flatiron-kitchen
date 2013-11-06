@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 describe "creating ingredients" do
   context "on the new ingredient page" do
     before do
