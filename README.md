@@ -16,11 +16,11 @@ Flatiron School and is now a five-star restaurant that's known for it's
 blueberry pancakes.
 
 Things used to be simpler when there were only a few chefs at Flatiron Kitchen,
-but now that they're growing an application is needed to keep track of the
-growing list of recipes.
+but now that they're growing an application is needed to keep track of all
+their world-class recipes.
 
-We need to be able to track which ingredients the restaurant has on hand and
-which ingredients are used in each recipe.
+We need to be able to track which ingredients the restaurant has
+available and which ingredients are used in each recipe.
 
 Your application should use a join table called "recipe_ingredients" to keep
 track of the ingredients for each recipe.
