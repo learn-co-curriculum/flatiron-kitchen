@@ -32,6 +32,15 @@ navigate).
 
 **NOTE:** Each test has a helpful comment above it!
 
+**HINT:** If you give a checkbox <input> a name attribute like:
+
+```ruby
+  ninja_turtle_color[]
+```
+
+each ninja turtle color will be passed to the params object in
+an array!
+
 ## Bonuses!
 
 Keep track of the quantity of ingredients currently on hand. Display on each

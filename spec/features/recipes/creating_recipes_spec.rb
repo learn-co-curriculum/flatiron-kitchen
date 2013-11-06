@@ -22,7 +22,8 @@ describe "creating recipes" do
       expect(page).to have_content("Blueberry Pancakes")
     end
 
-    # Are all possible ingredients displayed?
+    # Are there all available ingredients listed in the form with
+    # the ingredient name as a label and associated checkbox?
     it "should display all the existing ingredients" do
       Ingredient.create(name: 'Paprika')
       Ingredient.create(name: 'Clove')
