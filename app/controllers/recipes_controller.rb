@@ -5,6 +5,7 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
+    @ingredients = Ingredient.all
   end
 
   def edit
@@ -15,7 +16,9 @@ class RecipesController < ApplicationController
   end
 
   def create
-    Recipe.create(recipe_params)
+    recipe = Recipe.create(recipe_params)
+
+    recipe.update_ingredients_by_id(params[:recipe][:ingredient_ids])
 
     redirect_to recipes_path
   end

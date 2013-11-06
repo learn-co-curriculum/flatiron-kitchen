@@ -1,4 +1,10 @@
 <%= form_for @recipe do |f| %>
   <%= f.text_field :name %>
+
+  <% @ingredients.each do |ingredient| %>
+    <%= label_tag "ingredient_#{ingredient.id}", ingredient.name %>
+    <%= check_box_tag "recipe[ingredient_ids][]", ingredient.id %>
+  <% end %>
+
   <%= f.submit %>
 <% end %>
