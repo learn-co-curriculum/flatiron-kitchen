@@ -14,7 +14,7 @@ describe "creating recipes" do
       fill_in 'recipe_name', with: 'Candy Corn Dumplings'
       click_button('Create Recipe')
 
-      recipe.first.name.should == "Candy Corn Dumplings"
+      Recipe.first.name.should == "Candy Corn Dumplings"
       expect(page).to have_content("Candy Corn Dumplings")
     end
   end

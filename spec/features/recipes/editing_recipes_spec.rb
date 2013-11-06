@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "editing recipes" do
   context "on the edit recipe page" do
     before do
-      @recipe = recipe.create(name: "Rice Pudding")
+      @recipe = Recipe.create(name: "Rice Pudding")
       visit edit_recipe_path(@recipe)
     end
 
@@ -15,7 +15,7 @@ describe "editing recipes" do
       fill_in 'recipe_name', with: "Rice Pudding with Farmer Darryl's Frog Sauce"
       click_button('Update Recipe')
 
-      recipe.first.name.should == "Rice Pudding with Farmer Darryl's Frog Sauce"
+      Recipe.first.name.should == "Rice Pudding with Farmer Darryl's Frog Sauce"
       expect(page).to have_content("Rice Pudding with Farmer Darryl's Frog Sauce")
     end
   end
