@@ -30,6 +30,8 @@ aren't tests for index pages or things like page titles or links but
 feel free to add these (otherwise your app will be difficult to
 navigate).
 
+**NOTE:** Each test has a helpful comment above it!
+
 ## Bonuses!
 
 Keep track of the quantity of ingredients currently on hand. Display on each
