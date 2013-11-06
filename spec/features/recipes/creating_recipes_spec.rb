@@ -2,15 +2,15 @@ require 'spec_helper'
 
 describe "creating recipes" do
   context "on the new recipe page" do
-    before do
-      visit new_recipe_path
-    end
-
     it "should have a form to create the recipes" do
+      visit new_recipe_path
+
       expect(page).to have_css("form#new_recipe")
     end
 
     it "should create a recipe when the form is submitted" do
+      visit new_recipe_path
+
       fill_in 'recipe_name', with: 'Candy Corn Dumplings'
       click_button('Create Recipe')
 
@@ -21,12 +21,14 @@ describe "creating recipes" do
     it "should create a recipe with one ingredient" do
       Ingredient.create(name: 'Spam')
 
+      visit new_recipe_path
+
       fill_in 'recipe_name', with: 'Spam Cakes'
 
-      check('Spam Cakes')
+      check('Spam')
       click_button('Create Recipe')
 
-      Recipe.first.ingredients.where(name: 'Spam Cakes').count.should == 1
+      Recipe.first.ingredients.where(name: 'Spam').count.should == 1
     end
 
     it "should create a recipe with many ingredients" do
@@ -34,6 +36,8 @@ describe "creating recipes" do
       Ingredient.create(name: 'Clove')
       Ingredient.create(name: 'Ginger')
       Ingredient.create(name: 'Cider')
+
+      visit new_recipe_path
 
       fill_in 'recipe_name', with: 'Holiday Spice Cider'
 
@@ -48,6 +52,8 @@ describe "creating recipes" do
     end
 
     it "should create a recipe with 0 ingredients" do
+      visit new_recipe_path
+
       fill_in 'recipe_name', with: 'Recipe in Progress'
 
       click_button('Create Recipe')
