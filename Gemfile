@@ -33,7 +33,7 @@ group :doc do
 end
 
 group :test do
-  gem 'rspec'
+  gem 'rspec-rails'
   gem 'capybara'
 end
 
