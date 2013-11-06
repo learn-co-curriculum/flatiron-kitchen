@@ -18,7 +18,7 @@ class RecipesController < ApplicationController
   def create
     recipe = Recipe.create(recipe_params)
 
-    recipe.update_ingredients_by_id(params[:recipe][:ingredient_ids])
+    recipe.update_ingredients_by_id(params[:ingredient_ids])
 
     redirect_to recipes_path
   end
@@ -27,7 +27,7 @@ class RecipesController < ApplicationController
     recipe = Recipe.find(params[:id])
     recipe.update(recipe_params)
 
-    recipe.update_ingredients_by_id(params[:recipe][:ingredient_ids])
+    recipe.update_ingredients_by_id(params[:ingredient_ids])
 
     redirect_to recipes_path
   end
