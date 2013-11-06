@@ -25,11 +25,14 @@ which ingredients are used in each recipe.
 Your application should use a join table called "recipe_ingredients" to keep
 track of the ingredients for each recipe.
 
-Build your site so that it passes the tests in spec/features.
+Build your site so that it passes the tests in spec/features. There
+aren't tests for index pages or things like page titles or links but
+feel free to add these (otherwise your app will be difficult to
+navigate).
 
 ## Bonuses!
 
-Keep track of the quantity of ingredients currently on hand. Display on the each
+Keep track of the quantity of ingredients currently on hand. Display on each
 recipe page how many dishes can be made given the existing ingredients.
 
 Write rspec unit tests to check that your application correctly calculates

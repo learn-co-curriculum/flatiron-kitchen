@@ -7,10 +7,12 @@ describe "editing recipes" do
       visit edit_recipe_path(@recipe)
     end
 
+    # Is there a form with the given HTML id?
     it "should have a form to edit the recipe" do
       expect(page).to have_css("form#edit_recipe_#{@recipe.id}")
     end
 
+    # Does the form correctly update the recipe name?
     it "should update a recipe when the form is submitted" do
       fill_in 'recipe_name', with: "Rice Pudding with Farmer Darryl's Frog Sauce"
       click_button('Update Recipe')
@@ -19,6 +21,25 @@ describe "editing recipes" do
       expect(page).to have_content("Rice Pudding with Farmer Darryl's Frog Sauce")
     end
 
+    # Are all possible ingredients displayed?
+    it "should display all the existing ingredients" do
+      Ingredient.create(name: 'Paprika')
+      Ingredient.create(name: 'Clove')
+      Ingredient.create(name: 'Ginger')
+      Ingredient.create(name: 'Cider')
+
+      visit edit_recipe_path(@recipe)
+
+      expect(page).to have_content('Paprika')
+      expect(page).to have_content('Clove')
+      expect(page).to have_content('Ginger')
+      expect(page).to have_content('Cider')
+    end
+
+    # Are all the ingredients added to the recipe?
+    # HINT: You need to use checkboxes. Each checkbox should have a CORRECTLY
+    #       implemented HTML label
+    #       (i.e. clicking on the <label> checks/unchecks the box).
     it "should be able to add ingredients" do
       Ingredient.create(name: 'Paprika')
       Ingredient.create(name: 'Clove')
@@ -37,6 +58,11 @@ describe "editing recipes" do
       @recipe.ingredients.count.should == 4
     end
 
+
+    # Are all the ingredients removed from the recipe?
+    # HINT: You need to use checkboxes. Each checkbox should have a CORRECTLY
+    #       implemented HTML label
+    #       (i.e. clicking on the <label> checks/unchecks the box).
     it "should be able to remove ingredients" do
       @recipe.ingredients.create(name: 'Paprika')
       @recipe.ingredients.create(name: 'Clove')
