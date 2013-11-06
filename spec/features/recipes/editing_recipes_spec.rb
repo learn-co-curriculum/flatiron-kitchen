@@ -21,6 +21,21 @@ describe "editing recipes" do
       expect(page).to have_content("Rice Pudding with Farmer Darryl's Frog Sauce")
     end
 
+    # Are all possible ingredients displayed?
+    it "should display all the existing ingredients" do
+      Ingredient.create(name: 'Paprika')
+      Ingredient.create(name: 'Clove')
+      Ingredient.create(name: 'Ginger')
+      Ingredient.create(name: 'Cider')
+
+      visit edit_recipe_path(@recipe)
+
+      expect(page).to have_content('Paprika')
+      expect(page).to have_content('Clove')
+      expect(page).to have_content('Ginger')
+      expect(page).to have_content('Cider')
+    end
+
     # Are all the ingredients added to the recipe?
     # HINT: You need to use checkboxes. Each checkbox should have a CORRECTLY
     #       implemented HTML label

@@ -12,7 +12,7 @@ describe "creating ingredients" do
     end
 
     # After filling the form out with the given name, does the
-    # ingredient # exist in the database?
+    # ingredient exist in the database?
     #
     # Is the user redirected to a page that displays the ingredient name?
     it "should create an ingredient when the form is submitted" do

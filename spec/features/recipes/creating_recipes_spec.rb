@@ -15,11 +15,26 @@ describe "creating recipes" do
     it "should create a recipe when the form is submitted" do
       visit new_recipe_path
 
-      fill_in 'recipe_name', with: 'Candy Corn Dumplings'
+      fill_in 'recipe_name', with: 'Blueberry Pancakes'
       click_button('Create Recipe')
 
-      Recipe.first.name.should == "Candy Corn Dumplings"
-      expect(page).to have_content("Candy Corn Dumplings")
+      Recipe.first.name.should == "Blueberry Pancakes"
+      expect(page).to have_content("Blueberry Pancakes")
+    end
+
+    # Are all possible ingredients displayed?
+    it "should display all the existing ingredients" do
+      Ingredient.create(name: 'Paprika')
+      Ingredient.create(name: 'Clove')
+      Ingredient.create(name: 'Ginger')
+      Ingredient.create(name: 'Cider')
+
+      visit new_recipe_path
+
+      expect(page).to have_content('Paprika')
+      expect(page).to have_content('Clove')
+      expect(page).to have_content('Ginger')
+      expect(page).to have_content('Cider')
     end
 
     # Does the recipe get successfully created with 1 ingredient?
