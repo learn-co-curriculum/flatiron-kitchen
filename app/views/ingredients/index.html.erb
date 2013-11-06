@@ -1,7 +1,7 @@
 <ol>
 <% @ingredients.each do |ingredient| %>
   <li>
-    <%= link_to ingredient.name, edit_ingredients_path(ingredient) %>
+    <%= link_to ingredient.name, edit_ingredient_path(ingredient) %>
   </li>
 <% end %>
 </ol>
