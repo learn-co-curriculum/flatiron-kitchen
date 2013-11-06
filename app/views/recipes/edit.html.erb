@@ -2,7 +2,7 @@
   <%= f.text_field :name %>
 
   <% @all_ingredients.each do |ingredient| %>
-    <%= label_tag "ingredient_#{ingredient.id}" %>
+    <%= label_tag "ingredient_#{ingredient.id}", ingredient.name %>
     <%= check_box_tag "recipe[ingredient_ids][]", ingredient.id, @recipe_ingredients.include?(ingredient) %>
   <% end %>
 
