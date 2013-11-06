@@ -12,7 +12,7 @@ describe "creating ingredients" do
 
     it "should create an ingredient when the form is submitted" do
       fill_in 'ingredient_name', with: 'Parsley'
-      click('Create Ingredient')
+      click_button('Create Ingredient')
 
       Ingredient.first.name.should == "Parsley"
       expect(page).to have_content("Parsley")
