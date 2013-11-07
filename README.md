@@ -52,5 +52,4 @@ an array!
 Keep track of the quantity of ingredients currently on hand. Display on each
 recipe page how many dishes can be made given the existing ingredients.
 
-Write rspec unit tests to check that your application correctly calculates
-your ingredients-to-dishes calculator.
+Write rspec unit tests to verify your ingredients-to-dishes calculator.

@@ -11,7 +11,7 @@ describe "creating ingredients" do
       expect(page).to have_css("form#new_ingredient")
     end
 
-    # After filling the form out with the given name, does the
+    # After submitting the form out with the given name, does the
     # ingredient exist in the database?
     #
     # Is the user redirected to a page that displays the ingredient name?
