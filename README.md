@@ -34,12 +34,18 @@ navigate).
 
 **HINT:** If you give a checkbox <input> a name attribute like:
 
-```ruby
-  ninja_turtle_color[]
+```
+  ninja_turtle_colors[]
 ```
 
 each ninja turtle color will be passed to the params object in
 an array!
+
+```
+  {
+    ninja_turtle_colors: ["red", "blue", "orange", "purple"]
+  }
+```
 
 ## Bonuses!
 
