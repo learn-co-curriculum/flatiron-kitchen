@@ -26,16 +26,30 @@ Your application should use a join table called "recipe_ingredients" to keep
 track of the ingredients for each recipe.
 
 Build your site so that it passes the tests in spec/features. There
-aren't tests for index pages or things like page titles or links but
+aren't tests for index pages or things like page headers or links but
 feel free to add these (otherwise your app will be difficult to
 navigate).
 
 **NOTE:** Each test has a helpful comment above it!
+
+**HINT:** If you give a checkbox <input> a name attribute like:
+
+```
+  ninja_turtle_colors[]
+```
+
+each ninja turtle color will be passed to the params object in
+an array!
+
+```
+  {
+    ninja_turtle_colors: ["red", "blue", "orange", "purple"]
+  }
+```
 
 ## Bonuses!
 
 Keep track of the quantity of ingredients currently on hand. Display on each
 recipe page how many dishes can be made given the existing ingredients.
 
-Write rspec unit tests to check that your application correctly calculates
-your ingredients-to-dishes calculator.
+Write rspec unit tests to verify your ingredients-to-dishes calculator.

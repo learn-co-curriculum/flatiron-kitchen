@@ -21,7 +21,8 @@ describe "editing recipes" do
       expect(page).to have_content("Rice Pudding with Farmer Darryl's Frog Sauce")
     end
 
-    # Are all possible ingredients displayed?
+    # Are there all available listed in the form with
+    # the ingredient name as a label and an associated checkbox?
     it "should display all the existing ingredients" do
       Ingredient.create(name: 'Paprika')
       Ingredient.create(name: 'Clove')
@@ -29,6 +30,8 @@ describe "editing recipes" do
       Ingredient.create(name: 'Cider')
 
       visit edit_recipe_path(@recipe)
+
+      expect(page).to have_css("input[type=\"checkbox\"]", :count => 4)
 
       expect(page).to have_content('Paprika')
       expect(page).to have_content('Clove')
