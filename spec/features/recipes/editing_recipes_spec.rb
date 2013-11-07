@@ -21,7 +21,7 @@ describe "editing recipes" do
       expect(page).to have_content("Rice Pudding with Farmer Darryl's Frog Sauce")
     end
 
-    # Are there all available listed in the form with
+    # Are there all ingredients listed in the form with
     # the ingredient name as a label and an associated checkbox?
     it "should display all the existing ingredients" do
       Ingredient.create(name: 'Paprika')
