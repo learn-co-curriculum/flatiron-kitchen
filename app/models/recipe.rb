@@ -5,7 +5,7 @@ class Recipe < ActiveRecord::Base
   def recipe_ingredient_attrs=(ri_attrs)
     ri_attrs.keep_if { |ria| ria[:ingredient_id].present? }
 
-    self.recipe_ingredients = []
+    self.recipe_ingredients.destroy_all
     ri_attrs.each do |attrs|
       self.recipe_ingredients.build(attrs)
     end
