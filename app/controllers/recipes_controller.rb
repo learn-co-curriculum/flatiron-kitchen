@@ -12,7 +12,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
 
     @all_ingredients = Ingredient.all
-    @recipe_ingredients = @recipe.ingredients
+    @recipe_ingredients = @recipe.recipe_ingredients
   end
 
   def create
@@ -30,6 +30,6 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:name, ingredient_ids: [])
+    params.require(:recipe).permit(:name, recipe_ingredient_attrs: [:ingredient_id, :quantity])
   end
 end
