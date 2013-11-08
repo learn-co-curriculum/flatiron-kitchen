@@ -16,23 +16,20 @@ class RecipesController < ApplicationController
   end
 
   def create
-    recipe = Recipe.create(recipe_params)
-
-    recipe.update_ingredients_by_id(params[:ingredient_ids])
+    Recipe.create(recipe_params)
 
     redirect_to recipes_path
   end
 
   def update
     recipe = Recipe.find(params[:id])
-    recipe.update(recipe_params)
 
-    recipe.update_ingredients_by_id(params[:ingredient_ids])
+    recipe.update(recipe_params)
 
     redirect_to recipes_path
   end
 
   def recipe_params
-    params.require(:recipe).permit(:name)
+    params.require(:recipe).permit(:name, ingredient_ids: [])
   end
 end
