@@ -5,12 +5,12 @@ class Recipe < ActiveRecord::Base
   def recipe_ingredient_attrs=(ri_attrs)
     ri_attrs.keep_if { |ria| ria[:ingredient_id].present? }
 
+    self.recipe_ingredients = []
     ri_attrs.each do |attrs|
       self.recipe_ingredients.build(attrs)
     end
 
-    ingredients = Ingredient.where("id in (?)", ingredient_ids)
-    self.ingredients = ingredients
+    self.save
   end
 
   def quantity_for(ingredient)
