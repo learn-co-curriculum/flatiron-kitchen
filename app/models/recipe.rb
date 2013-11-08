@@ -12,4 +12,9 @@ class Recipe < ActiveRecord::Base
     ingredients = Ingredient.where("id in (?)", ingredient_ids)
     self.ingredients = ingredients
   end
+
+  def quantity_for(ingredient)
+    ri = self.recipe_ingredients.where(ingredient: ingredient).first
+    ri.quantity if ri
+  end
 end

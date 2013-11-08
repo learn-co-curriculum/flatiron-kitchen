@@ -13,6 +13,7 @@ class RecipesController < ApplicationController
 
     @all_ingredients = Ingredient.all
     @recipe_ingredients = @recipe.recipe_ingredients
+    @recipe_ingredient_ids = @recipe_ingredients.map { |ri| ri.ingredient_id }
   end
 
   def create
