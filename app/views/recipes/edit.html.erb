@@ -3,11 +3,11 @@
 
   <%= hidden_field_tag "recipe[ingredient_ids][]", nil %>
   <% @all_ingredients.each do |ingredient| %>
-    <%= label_tag "ingredient_#{ingredient.id}", ingredient.name %>
-    <%= check_box_tag "recipe[ingredient_ids][]", ingredient.id, @recipe_ingredients.include?(ingredient), id: "ingredient_#{ingredient.id}" %>
-
-    <%= text_field_tag "recipe[recipe_ingredient_attrs][][quantity]", @recipe.quantity_for(ingredient), id: "ingredient_quantity_#{ingredient.id}" %>
-    <%= check_box_tag "recipe[recipe_ingredient_attrs][][ingredient_id]", ingredient.id, @recipe_ingredient_ids.include?(ingredient.id), id: "ingredient_#{ingredient.id}" %>
+    <div>
+      <%= label_tag "ingredient_#{ingredient.id}", ingredient.name %>
+      <%= text_field_tag "recipe[recipe_ingredient_attrs][][quantity]", @recipe.quantity_for(ingredient), id: "ingredient_quantity_#{ingredient.id}" %>
+      <%= check_box_tag "recipe[recipe_ingredient_attrs][][ingredient_id]", ingredient.id, @recipe_ingredient_ids.include?(ingredient.id), id: "ingredient_#{ingredient.id}" %>
+    </div>
   <% end %>
 
   <%= f.submit %>
