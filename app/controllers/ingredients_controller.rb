@@ -27,6 +27,6 @@ class IngredientsController < ApplicationController
   private 
 
   def ingredient_params
-    params.require(:ingredient).permit(:name)
+    params.require(:ingredient).permit(:name, :inventory_units, :inventory_total)
   end
 end

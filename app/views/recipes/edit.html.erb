@@ -1,6 +1,10 @@
 <%= form_for @recipe do |f| %>
   <%= f.text_field :name %>
 
+  <p>
+    There are enough ingredients to make <%= @recipe.total_makeable %> <%= @recipe.name.pluralize %>
+  </p>
+
   <%= hidden_field_tag "recipe[ingredient_ids][]", nil %>
   <% @all_ingredients.each do |ingredient| %>
     <div>

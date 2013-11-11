@@ -2,6 +2,12 @@ class Recipe < ActiveRecord::Base
   has_many :recipe_ingredients
   has_many :ingredients, through: :recipe_ingredients
 
+  def total_makeable
+    return 0 if ri.quantity == 0
+
+    self.recipe_ingredients.map { |ri| ri.ingredient.inventory_total / ri.quantity }.min
+  end
+
   def recipe_ingredient_attrs=(ri_attrs)
     ri_attrs.keep_if { |ria| ria[:ingredient_id].present? }
 
