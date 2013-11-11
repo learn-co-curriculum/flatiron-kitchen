@@ -4,9 +4,9 @@
   <% @ingredients.each do |ingredient| %>
     <div>
       <%= f.fields_for :recipe_ingredients, RecipeIngredient.new do |ri_fields| %>
-        <%= ri_fields.label :name, ingredient.name %>
+        <%= ri_fields.label :name, ingredient.name, for: "ingredient_#{ingredient.id}" %>
         <%= ri_fields.text_field :quantity %>
-        <%= ri_fields.check_box :ingredient_id, {}, ingredient.id, nil %>
+        <%= ri_fields.check_box :ingredient_id, {id: "ingredient_#{ingredient.id}"}, ingredient.id, nil %>
       <% end %>
     </div>
   <% end %>
