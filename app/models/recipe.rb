@@ -3,7 +3,13 @@ class Recipe < ActiveRecord::Base
   has_many :ingredients, through: :recipe_ingredients
 
   def total_makeable
-    self.recipe_ingredients.map { |ri| ri.quantity && (ri.quantity > 0) ? ri.ingredient.inventory_total / ri.quantity : 0 }.min
+    self.recipe_ingredients.map do |recipe_ingredient|
+      if recipe_ingredient.quantity && recipe_ingredient.quantity > 0
+        recipe_ingredient.ingredient.inventory_total / recipe_ingredient.quantity
+      else
+        0
+      end
+    end.min
   end
 
   def recipe_ingredient_attrs=(ri_attrs)
