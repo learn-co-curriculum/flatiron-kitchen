@@ -3,9 +3,11 @@
 
   <% @ingredients.each do |ingredient| %>
     <div>
-      <%= label_tag "ingredient_#{ingredient.id}", ingredient.name %>
-      <%= text_field_tag "recipe[recipe_ingredient_attrs][][quantity]", "", id: "ingredient_quantity_#{ingredient.id}" %>
-      <%= check_box_tag "recipe[recipe_ingredient_attrs][][ingredient_id]", ingredient.id, false, id: "ingredient_#{ingredient.id}" %>
+      <%= f.fields_for :recipe_ingredients, RecipeIngredient.new do |ri_fields| %>
+        <%= ri_fields.label :name, ingredient.name %>
+        <%= ri_fields.text_field :quantity %>
+        <%= ri_fields.check_box :ingredient_id, {}, ingredient.id, nil %>
+      <% end %>
     </div>
   <% end %>
 
