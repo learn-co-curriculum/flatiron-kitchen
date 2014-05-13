@@ -1,6 +1,7 @@
 ---
   tags: rails, join tables
   languages: ruby
+  resources: 2
 ---
 
 # Flatiron Kitchen
@@ -53,3 +54,7 @@ Keep track of the quantity of ingredients currently on hand. Display on each
 recipe page how many dishes can be made given the existing ingredients.
 
 Write rspec unit tests to verify your ingredients-to-dishes calculator.
+
+## Resources
+* [Rails Guides](http://guides.rubyonrails.org/) - [Active Record Basics](http://guides.rubyonrails.org/association_basics.html)
+* [Rails Guides](http://guides.rubyonrails.org/) - [Action Controller Overview](http://guides.rubyonrails.org/action_controller_overview.html)
