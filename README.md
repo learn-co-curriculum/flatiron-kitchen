@@ -1,5 +1,5 @@
 ---
-  tags: rails, join tables
+  tags: rails, join tables, forms, CRUD, associations, validations
   languages: ruby
   resources: 2
 ---
