@@ -1,7 +1,10 @@
 ---
-  tags: rails, join tables, forms, CRUD, associations, validations
-  languages: ruby
-  resources: 2
+tags: rails, join tables, forms, CRUD, associations, validations
+language: ruby
+unit: rails
+module: Building complete apps
+level: intermediate
+resources: 2
 ---
 
 # Flatiron Kitchen
