@@ -31,6 +31,8 @@ aren't tests for index pages or things like page headers or links but
 feel free to add these (otherwise your app will be difficult to
 navigate).
 
+**NOTE:** <em>Before anything</em>, note that when you generate models, controllers, etc, be sure to include this option, so that it skips tests (which are already included in the lab): `--no-test-framework`
+
 **NOTE:** Each test has a helpful comment above it!
 
 **HINT:** If you give a checkbox <input> a name attribute like:
