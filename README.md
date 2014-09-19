@@ -1,6 +1,10 @@
 ---
-  tags: rails, join tables
-  languages: ruby
+tags: rails, join tables, forms, CRUD, associations, validations
+language: ruby
+unit: rails
+module: Building complete apps
+level: intermediate
+resources: 2
 ---
 
 # Flatiron Kitchen
@@ -30,6 +34,8 @@ aren't tests for index pages or things like page headers or links but
 feel free to add these (otherwise your app will be difficult to
 navigate).
 
+**NOTE:** <em>Before anything</em>, note that when you generate models, controllers, etc, be sure to include this option, so that it skips tests (which are already included in the lab): `--no-test-framework`
+
 **NOTE:** Each test has a helpful comment above it!
 
 **HINT:** If you give a checkbox <input> a name attribute like:
@@ -53,3 +59,7 @@ Keep track of the quantity of ingredients currently on hand. Display on each
 recipe page how many dishes can be made given the existing ingredients.
 
 Write rspec unit tests to verify your ingredients-to-dishes calculator.
+
+## Resources
+* [Rails Guides](http://guides.rubyonrails.org/) - [Active Record Basics](http://guides.rubyonrails.org/association_basics.html)
+* [Rails Guides](http://guides.rubyonrails.org/) - [Action Controller Overview](http://guides.rubyonrails.org/action_controller_overview.html)
