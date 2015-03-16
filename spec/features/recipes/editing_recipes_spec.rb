@@ -17,7 +17,7 @@ describe "editing recipes" do
       fill_in 'recipe_name', with: "Rice Pudding with Farmer Darryl's Frog Sauce"
       click_button('Update Recipe')
 
-      Recipe.first.name.should == "Rice Pudding with Farmer Darryl's Frog Sauce"
+      expect(Recipe.first.name).to eq("Rice Pudding with Farmer Darryl's Frog Sauce")
       expect(page).to have_content("Rice Pudding with Farmer Darryl's Frog Sauce")
     end
 
@@ -58,7 +58,7 @@ describe "editing recipes" do
 
       click_button('Update Recipe')
 
-      @recipe.ingredients.count.should == 4
+      expect(@recipe.ingredients.count).to eq(4)
     end
 
 
@@ -72,7 +72,7 @@ describe "editing recipes" do
       @recipe.ingredients.create(name: 'Ginger')
       @recipe.ingredients.create(name: 'Cider')
 
-      @recipe.ingredients.count.should == 4
+      expect(@recipe.ingredients.count).to eq(4)
 
       visit edit_recipe_path(@recipe)
 
@@ -83,7 +83,7 @@ describe "editing recipes" do
 
       click_button('Update Recipe')
 
-      @recipe.ingredients.count.should == 0
+      expect(@recipe.ingredients.count).to eq(0)
     end
   end
 end

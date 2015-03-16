@@ -20,7 +20,7 @@ describe "editing ingredients" do
       fill_in 'ingredient_name', with: 'Rochester Pollywog Eggs'
       click_button('Update Ingredient')
 
-      Ingredient.first.name.should == "Rochester Pollywog Eggs"
+      expect(Ingredient.first.name).to eq("Rochester Pollywog Eggs")
       expect(page).to have_content("Rochester Pollywog Eggs")
     end
   end

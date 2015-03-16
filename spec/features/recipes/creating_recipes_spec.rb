@@ -18,7 +18,7 @@ describe "creating recipes" do
       fill_in 'recipe_name', with: 'Blueberry Pancakes'
       click_button('Create Recipe')
 
-      Recipe.first.name.should == "Blueberry Pancakes"
+      expect(Recipe.first.name).to eq("Blueberry Pancakes")
       expect(page).to have_content("Blueberry Pancakes")
     end
 
@@ -54,7 +54,7 @@ describe "creating recipes" do
       check('Spam')
       click_button('Create Recipe')
 
-      Recipe.first.ingredients.where(name: 'Spam').count.should == 1
+      expect(Recipe.first.ingredients.where(name: 'Spam').count).to eq(1)
     end
 
 
@@ -79,7 +79,7 @@ describe "creating recipes" do
 
       click_button('Create Recipe')
 
-      Recipe.first.ingredients.count.should == 4
+      expect(Recipe.first.ingredients.count).to eq(4)
     end
 
 
@@ -97,7 +97,7 @@ describe "creating recipes" do
 
       click_button('Create Recipe')
 
-      Recipe.first.ingredients.count.should == 0
+      expect(Recipe.first.ingredients.count).to eq(0)
     end
   end
 end
