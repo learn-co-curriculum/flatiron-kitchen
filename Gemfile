@@ -20,4 +20,9 @@ end
 
 group :test do
   gem 'rspec-collection_matchers'
+<<<<<<< HEAD
+=======
+  gem 'rspec-rails'
+  gem 'capybara'
+>>>>>>> updated gemfile, migrations
 end
