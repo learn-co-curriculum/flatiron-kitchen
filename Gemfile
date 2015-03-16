@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.2.0'
 
+gem "pry"
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2'
 
@@ -34,6 +36,7 @@ group :doc do
 end
 
 group :test do
+  gem 'rspec-collection_matchers'
   gem 'rspec-rails'
   gem 'capybara'
 end
