@@ -1,0 +1,12 @@
+tags:
+  - rails
+  - join tables
+  - forms
+  - CRUD
+  - associations
+  - validations
+languages:
+  - ruby
+module: Building complete apps
+level: intermediate
+resources: 2
