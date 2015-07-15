@@ -5,6 +5,7 @@ tags:
   - CRUD
   - associations
   - validations
+  - full stack
 languages:
   - ruby
 module: Building complete apps
