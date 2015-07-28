@@ -1,8 +1,3 @@
----
-  tags: rails, join tables
-  languages: ruby
----
-
 # Flatiron Kitchen
 
 ## Deliverable
