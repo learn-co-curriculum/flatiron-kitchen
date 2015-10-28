@@ -100,5 +100,42 @@ ActiveRecord::Schema.define(version: 20151028140014) do
 end
 ```
 
+Lastly, let's associate our models with each other so that an ingredient `has_many` recipes and a recipe `has_many` ingredients. We'll also make sure that our ingredients and recipes are invalid without a name.
+
+```ruby
+# app/models/ingredient.rb
+class Ingredient < ActiveRecord::Base
+  has_many :recipe_ingredients
+  has_many :recipes, through: :recipe_ingredients
+
+  validates :name, presence: true
+end
+
+```
+
+```ruby
+# app/models/recipe.rb
+class Recipe < ActiveRecord::Base
+  has_many :recipe_ingredients
+  has_many :ingridents, through: :recipe_ingredients
+
+  validates :name, presence: true
+end
+
+```
+
+```ruby
+# app/models/recipe_ingredients.rb
+class Ingredient < ActiveRecord::Base
+  belongs_to :recipe
+  belongs_to :ngredients
+end
+
+```
+
+### Setting Up Our Forms
+
+
+
 
 
