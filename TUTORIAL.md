@@ -133,7 +133,7 @@ end
 
 ```
 
-### Setting Up Our Forms
+### Ingredient Forms
 
 Next, we need to build out the ability for our users to create new Ingredients. How will we do that? Yep, with a form!
 
@@ -235,6 +235,52 @@ class IngredientsController < ApplicationController
   end
 ```
 
+We can now create new ingredients. Let's add the ability to edit them. Whenever we add a new feature to our application, we need to ask two things. First, does  our schema need to change? Secondly, what URL will the user use to access the feature? In this case, we already have our path defined as well - the `edit_ingredient_path` will be a get request to `/ingredients/:id/edit` that should render our edit form, and submitting that form will be a patch request to `ingredients/:id`. 
+
+Let's create an `edit` action in our Ingredients controller. First, we'll load the the ingredient based on what is in params, then render a file called `edit.html.erb` in the `ingredients` directory. 
+
+```ruby
+class IngredientsController < ApplicationController
+  ...
+
+  def edit
+    @ingredient = Ingredient.find(params[:id])
+  end
+
+```
+
+We can use `form_for` to create our edit form as well. 
+
+```erb
+<%= form_for @ingredient do |f| %>
+  <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>
+```
+
+Notice how this is identical to our `new` form? We can move this into a partial so we don't have to repeat this code. Create a file called `_form.html.erb` and move the code from our `edit` form inside. Our `new` and `edit` templates can now simply user the `render` method to display the `form` partial. 
+
+```erb
+# _form.html.erb
+<%= form_for @ingredient do |f| %>
+  <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>
+```
+
+```erb
+# new.html.erb
+<%= render "form" %>
+```
+
+```erb
+# edit.html.erb
+<%= render "form" %>
+```
+
+### Recipe Forms
+
+Now, our ingredients can be created and edited. Awesome! Let's add the same functionality for recipes. 
 
 
 
