@@ -128,14 +128,112 @@ end
 # app/models/recipe_ingredients.rb
 class Ingredient < ActiveRecord::Base
   belongs_to :recipe
-  belongs_to :ngredients
+  belongs_to :ingredients
 end
 
 ```
 
 ### Setting Up Our Forms
 
+Next, we need to build out the ability for our users to create new Ingredients. How will we do that? Yep, with a form!
 
+Because we generated a resource for ingredients, our seven RESTful routes are already created for us. Going to the route `ingredients/new` will route us to the new action in our Ingredients controller. By default, this will render a template called `new.html.erb` inside of `views/ingredients`. Let's create that new file now. This file should render a form to create a new ingredient.
+
+We could, if we wanted to, write a plain old HTML form here. However, it will be much easier to maintain if we use Rails form helper methods. In this case, we can use `form_for`. `form_for` takes an object to update as an argument and yields you a "form builder object" that you can use to create labels and inputs. In this case, we'll pass in a newly created ingredient. 
+
+```ruby
+# views/ingredients/new.html.erb
+
+<%= form_for Ingredient.new do |f| %>
+  <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>
+```
+
+Because we want to keep as little Ruby code in our views as possible, let's create the new ingredient for our form in our Ingredients Controller instead and pass it into the form as an instance variable.
+
+
+```ruby
+# views/ingredients/new.html.erb
+
+class IngredientsController < ApplicationController
+
+  def new
+    @ingredient = Ingredient.new
+  end
+```
+
+```ruby
+# controllers/ingredients_controller.rb
+
+<%= form_for @ingredient do |f| %>
+  <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>
+```
+
+The `form_for` will automatically define the method and action based on the object passed as an argument. In this case,  since the ingredient hasn't been persisted to the database, it will send a POST request to '/ingredients', which will route us to the `create` action in the ingredients controller. This is where we'll actually create the new ingredient.
+
+```ruby
+# views/ingredients/new.html.erb
+
+class IngredientsController < ApplicationController
+
+  def new
+    @ingredient = Ingredient.new
+  end
+  
+  def create
+  	#we'll create the new ingredient here!
+  end
+```
+
+In order to use mass assignment, Rails requires us to specify which parameters we'll accept as a part of our hash. We do this using a private method - in this case we'll call it `ingredient_params`. 
+
+```ruby
+# views/ingredients/new.html.erb
+
+class IngredientsController < ApplicationController
+
+  def new
+    @ingredient = Ingredient.new
+  end
+  
+  def create
+  	Ingredient.create(ingredient_params)
+  end
+  
+  private 
+
+  def ingredient_params
+    params.require(:ingredient).permit(:name)
+  end
+```
+
+After our new ingredient is created, we need to redirect our user to a page to see their newly created information. Let's create an index page that lists out all of our ingredients. This page will be rendered at the '/ingredients' route, which corresponds to the `index` action in the ingredients controller. 
+
+```ruby
+# views/ingredients/new.html.erb
+
+class IngredientsController < ApplicationController
+
+  def index
+  
+  end
+  def new
+    @ingredient = Ingredient.new
+  end
+  
+  def create
+  	Ingredient.create(ingredient_params)
+  end
+  
+  private 
+
+  def ingredient_params
+    params.require(:ingredient).permit(:name)
+  end
+```
 
 
 
