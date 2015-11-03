@@ -278,9 +278,142 @@ Notice how this is identical to our `new` form? We can move this into a partial 
 <%= render "form" %>
 ```
 
+Finally, let's add an update action for our Ingredient Controller. 
+
+```ruby
+class IngredientsController < ApplicationController
+   def index
+    @ingredients = Ingredient.all
+  end
+
+  def new
+    @ingredient = Ingredient.new
+  end
+
+  def edit
+    @ingredient = Ingredient.find(params[:id])
+  end
+
+  def update
+    ingredient = Ingredient.find(params[:id])
+    ingredient.update(ingredient_params)
+    redirect_to ingredients_path
+  end
+
+  def create
+    Ingredient.create(ingredient_params)
+    redirect_to ingredients_path
+  end
+
+
+```
+
 ### Recipe Forms
 
 Now, our ingredients can be created and edited. Awesome! Let's add the same functionality for recipes. 
+
+Similar to our ingredients, we know that we'll want to be able to edit and create new recipes. Let's go ahead and build our form in a partial. We'll create a file called `_form.html.erb` inside of our `recipes` directory with fields for `name`. 
+
+```_form.html.erb
+<%= form_for(@recipe) do |f| %>
+  <%= f.label :name%>
+  <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>
+```
+
+Now, we can create files called `new.html.erb` and `edit.html.erb` and display the form using `<%= render "form" %>`. In our Recipe Controller, we simply need to define `@form` for our edit and update actions. 
+
+```ruby 
+class RecipesController < ApplicationController
+  def index
+    @recipes = Recipe.all
+  end
+
+  def new
+    @recipe = Recipe.new
+    @ingredients = Ingredient.all
+  end
+
+  def edit
+    @recipe = Recipe.find(params[:id])
+
+    @all_ingredients = Ingredient.all
+    @recipe_ingredients = @recipe.ingredients
+  end
+
+  def create
+    Recipe.create(recipe_params)
+    redirect_to recipes_path
+  end
+
+  def update
+    recipe = Recipe.find(params[:id])
+    recipe.update(recipe_params)
+    redirect_to recipes_path
+  end
+
+  def recipe_params
+    params.require(:recipe).permit(:name)
+  end
+end
+```
+
+Finally, when our user submits their form, it'd be nice to have the ability to select which of our ingredients should be included with the recipe. Let's add a collection input to our form that will give us a checkbox for each ingredient. 
+
+```erb
+# _form.html.erb
+<%= form_for(@recipe) do |f| %>
+  <%= f.label :name%>
+  <%= f.text_field :name %>
+  <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name %>
+  <%= f.submit %>
+<% end %>
+```
+
+The `collection_check_boxes` method takes four arguments. The first will be the name on the collection in params. The second is the collection of items that we want checkboxes for, in this case all of the Ingredients in our database. The third argument is the value that will show up if selected. We want the id of our ingredient to be included in our array. The fourth argument is what will actually display on our page. 
+
+
+In our controller, we need to permit `params` named `ingredient_ids`. We'll identify this as an array. 
+
+```ruby 
+class RecipesController < ApplicationController
+  
+  ...
+  
+  def recipe_params
+    params.require(:recipe).permit(:name, :ingredient_ids => [] )
+  end
+end
+```
+
+For this to work, our Recipe model will need to respond to a method called `ingredient_ids=`. This should take an array of ingredient_ids and associate the Recipe with those ingredients. We can build out this method ourselves. 
+
+```ruby
+class Recipe < ActiveRecord::Base
+  has_many :recipe_ingredients
+  has_many :ingredients, through: :recipe_ingredients
+
+  validates :name, presence: true
+
+  def ingredient_ids=(ingredient_ids)
+    ingredients = Ingredient.where("id in (?)", ingredient_ids)
+    self.ingredients = ingredients
+  end
+end
+```
+
+We can also build this method using a Rails macro called `accepts_nested_attributes_for`.
+
+```ruby
+class Recipe < ActiveRecord::Base
+  has_many :recipe_ingredients
+  has_many :ingredients, through: :recipe_ingredients
+
+  validates :name, presence: true
+  accepts_nested_attributes_for :ingredients
+end
+```
 
 
 
