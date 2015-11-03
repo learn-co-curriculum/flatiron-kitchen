@@ -4,8 +4,5 @@ class Recipe < ActiveRecord::Base
 
   validates :name, presence: true
 
-  def ingredient_ids=(ingredient_ids)
-    ingredients = Ingredient.where("id in (?)", ingredient_ids)
-    self.ingredients = ingredients
-  end
+  accepts_nested_attributes_for :ingredients
 end
