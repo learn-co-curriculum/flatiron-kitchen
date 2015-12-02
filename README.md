@@ -54,3 +54,5 @@ Write rspec unit tests to verify your ingredients-to-dishes calculator.
 ## Resources
 * [Rails Guides](http://guides.rubyonrails.org/) - [Active Record Basics](http://guides.rubyonrails.org/association_basics.html)
 * [Rails Guides](http://guides.rubyonrails.org/) - [Action Controller Overview](http://guides.rubyonrails.org/action_controller_overview.html)
+
+<a href='https://learn.co/lessons/flatiron-kitchen' data-visibility='hidden'>View this lesson on Learn.co</a>
