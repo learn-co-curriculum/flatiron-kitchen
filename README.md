@@ -6,7 +6,7 @@ Fork this repository. Deliver your solution in master.
 
 ## Instructions
 
-Flatiron Kitchen started off as a bubble tea bar in the corner of Flatiron School and is now a five-star restaurant that's known for it's blueberry pancakes.
+Flatiron Kitchen started off as a bubble tea bar in the corner of Flatiron School and is now a five-star restaurant that's known for its blueberry pancakes.
 
 Things used to be simpler when there were only a few chefs at Flatiron Kitchen, but now that they're growing an application is needed to keep track of all their world-class recipes.
 
@@ -46,3 +46,5 @@ Write rspec unit tests to verify your ingredients-to-dishes calculator.
 * [Rails Guides](http://guides.rubyonrails.org/) - [Action Controller Overview](http://guides.rubyonrails.org/action_controller_overview.html)
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/flatiron-kitchen' title='Flatiron Kitchen'>Flatiron Kitchen</a> on Learn.co and start learning to code for free.</p>
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/flatiron-kitchen'>Flatiron Kitchen</a> on Learn.co and start learning to code for free.</p>
