@@ -1,10 +1,1 @@
-<%= form_for @recipe do |f| %>
-  <%= f.text_field :name %>
-
-  <% @ingredients.each do |ingredient| %>
-    <%= label_tag "ingredient_#{ingredient.id}", ingredient.name %>
-    <%= check_box_tag "recipe[ingredient_ids][]", ingredient.id, false, id: "ingredient_#{ingredient.id}" %>
-  <% end %>
-
-  <%= f.submit %>
-<% end %>
+<%= render partial: 'form', locals: {recipe: @recipe, ingredients: @ingredients} %>
