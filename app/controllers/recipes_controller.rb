@@ -21,7 +21,6 @@ class RecipesController < ApplicationController
   end
 
   def edit
-    @recipe_ingredients = @recipe.ingredients
   end
 
   def update
