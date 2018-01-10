@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2'
+gem 'rails', '~> 4.2'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.3.11'
@@ -38,7 +38,7 @@ end
 
 group :test do
   gem 'rspec-collection_matchers', '~> 1.1.2'
-  gem 'rspec-rails', '~> 3.3.3'
+  gem 'rspec-rails', '~> 3.7'
   gem 'capybara', '~> 2.5.0'
 end
 
