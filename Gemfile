@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'turbolinks'
+gem 'sprockets', '3.7.2'
 gem 'rails', '5.0.7.1'
 gem 'coffee-rails'
 gem 'jquery-rails'
