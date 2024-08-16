@@ -1,0 +1,17 @@
+<h1>Edit Recipe</h1>
+
+<%= form_for @recipe do |f| %>
+  <%= f.label :name%>
+  <%= f.text_field :name%>
+
+  <%= hidden_field_tag 'recipe[ingredient_ids][]', '' %>
+
+  <% @ingredients.each do |ingredient| %>
+    <div>
+      <%= label_tag "recipe_ingredient_ids_#{ingredient.id}", ingredient.name %>
+      <%= check_box_tag 'recipe[ingredient_ids][]', ingredient.id, @recipe.ingredients.include?(ingredient), id: "recipe_ingredient_ids_#{ingredient.id}" %>
+    </div>
+  <% end %>
+
+  <%= f.submit %>
+<% end %>
